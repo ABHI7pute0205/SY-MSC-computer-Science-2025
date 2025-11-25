@@ -1,0 +1,48 @@
+mkdir MyProject
+cd MyProject
+git init
+touch file1.txt
+git status
+git add .
+git commit -m "first commit"
+
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+
+git remote add origin https://github.com/username/MyProject.git
+git branch -M main
+git push -u origin main
+
+# ==== CREATE NEW BRANCH ====
+git branch Test
+git checkout Test
+touch abc.txt
+git add .
+git commit -m "added abc.txt file"
+git push --set-upstream origin Test
+
+# ==== DELETE FILE IN BRANCH ====
+del abc.txt              # windows
+git add .
+git commit -m "deleted abc.txt file"
+git push
+
+# ==== MERGE BRANCH INTO MAIN ====
+git checkout main
+git pull
+git merge Test
+git push
+
+# ==== IF MERGE CONFLICT ==== 
+# resolve manually inside file
+git add .
+git commit -m "resolved merge conflict"
+git push
+
+# ==== DELETE LOCAL & REMOTE BRANCH AFTER MERGE ====
+git branch -d Test
+git push origin --delete Test
+
+# ==== PULL BEFORE PUSH ERROR FIX ====
+git pull --rebase
+git push
